@@ -6,8 +6,14 @@
         {
             Console.WriteLine("-----DOP ZADANIE-----\n");
 
-            ContractEmployer employer = new ContractEmployer();
-            employer.ShowInfoOfDocument();
+            ContractForSupplyOfGoods supplies1 = new ContractForSupplyOfGoods();
+            ContractEmployer employer1 = new ContractEmployer();
+            FinancialInvoice finvoice1 = new FinancialInvoice();
+            supplies1.ShowInfoOfDocument();
+            employer1.ShowInfoOfDocument();            
+            finvoice1.ShowInfoOfDocument();
+
+
         }
     }
 }
