@@ -4,28 +4,35 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using static HomeTask9DopZadanie.Register;
 
 namespace HomeTask9DopZadanie
 {
-    public class Register : IDocument
+    public class Register : IRegister
     {
-        //public int numArrIndex;
-        public int NumArrIndex { get; set; }
-        public Document[] documents = new Document[10];
-        public Register() 
-        { 
-            NumArrIndex = 0;
-        }
-        public void SaveDocInRegister(Document doc) 
-        {
-            documents[NumArrIndex] = doc;
-            NumArrIndex++;
-        }
-        public void ShowInfoOfDocument(Document doc) 
-        {
-        
-        }
 
+        private int positionOfTheLastDocument = 0;
+        private IDocument[] documents = new IDocument[10];
+        public Register(int sizeOfRegister)
+        {
+            documents = new IDocument[sizeOfRegister];
+        }
+        public void SaveDocInRegister(IDocument doc)
+        {
+            if (positionOfTheLastDocument == documents.Length - 1)
+            {
+                Console.WriteLine($"Максимальный размер регистра достигнут ({documents.Length})");
+                return;
+            }
+
+            documents[positionOfTheLastDocument] = doc;
+            positionOfTheLastDocument++;
+        }
+        public void ShowInfoOfDocument(IDocument doc)
+        {
+            doc.ShowInfoOfDocument();
+        }
 
     }
+
 }
